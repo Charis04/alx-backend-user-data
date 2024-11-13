@@ -13,7 +13,7 @@ class Auth:
         """
         if excluded_paths is None:
             return True
-        
+
         if path[-1] != '/':
             path += '/'
 
