@@ -8,8 +8,7 @@ class Auth:
     """A class to manage the API authentication"""
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
-        """Requires auth
-        Returns: False
+        """Checks if a path requires authentication
         """
         if excluded_paths is None:
             return True
@@ -25,7 +24,14 @@ class Auth:
     def authorization_header(self, request=None) -> str:
         """Don't know man"""
 
-        return None
+        if request is None:
+            return None
+
+        auth_header = request.headers.get('Authorization')
+        if auth_header is None:
+            return None
+
+        return auth_header
 
     def current_user(self, request=None) -> TypeVar('User'):
         """Still don't know. Just writing what i'm told for now"""
