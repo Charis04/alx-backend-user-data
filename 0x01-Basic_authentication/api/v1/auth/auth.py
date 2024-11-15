@@ -22,7 +22,7 @@ class Auth:
         return True
 
     def authorization_header(self, request=None) -> str:
-        """Don't know man"""
+        """Check if there's an authorisation header in the request"""
 
         if request is None:
             return None
