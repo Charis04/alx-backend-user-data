@@ -64,7 +64,7 @@ class BasicAuth(Auth):
         if ":" not in decoded_base64_authorization_header:
             return (None, None)
 
-        credentials = decoded_base64_authorization_header.partition()(":")
+        credentials = decoded_base64_authorization_header.partition(":")
 
         return (credentials[0], credentials[2])
 
