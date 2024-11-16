@@ -37,7 +37,7 @@ def pre_request() -> str:
         return
     if auth.authorization_header(request) is None:
         return abort(401)
-    
+
     request.current_user = auth.current_user(request)
     if request.current_user is None:
         return abort(403)
