@@ -134,4 +134,4 @@ def update_user(user_id: str = None) -> str:
 def get_this_user():
     """Retrieves the authenticated User object."""
 
-    return request.current_user
+    return jsonify(request.current_user.to_json())
