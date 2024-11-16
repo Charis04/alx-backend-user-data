@@ -2,6 +2,7 @@
 """Auth class for api"""
 from flask import request
 from typing import List, TypeVar
+from os import getenv
 
 
 class Auth:
@@ -41,3 +42,14 @@ class Auth:
         """Still don't know. Just writing what i'm told for now"""
 
         return None
+
+    def session_cookie(self, request=None):
+        """Returns a cookie value from a request"""
+
+        if not request:
+            return
+
+        cookie_name = getenv('SESSION_NAME', None)
+        cookie_value = request.cookies.get(cookie_name)
+
+        return cookie_value
