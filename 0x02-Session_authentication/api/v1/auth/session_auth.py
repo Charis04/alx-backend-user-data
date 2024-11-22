@@ -16,7 +16,7 @@ class SessionAuth(Auth):
 
         if not user_id:
             return
-        if type(user_id) != str:
+        if type(user_id) is not str:
             return
 
         session_id = str(uuid.uuid4())
@@ -26,7 +26,7 @@ class SessionAuth(Auth):
     def user_id_for_session_id(self, session_id: str = None) -> str:
         """Rreturns a User ID based on a Session ID"""
 
-        if not session_id or type(session_id) != str:
+        if not session_id or type(session_id) is not str:
             return
 
         return self.user_id_by_session_id.get(session_id)
@@ -38,4 +38,3 @@ class SessionAuth(Auth):
         user_id = self.user_id_for_session_id(session_id)
 
         return User.get(user_id)
-
